@@ -1,22 +1,24 @@
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
 public class Example {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		InputStream is = null;
-		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+		File file = new File("java.pdf");
 
-		int nRead;
-		byte[] data = new byte[16384];
+	    FileOutputStream fis = new FileOutputStream(file);
 
-		while ((nRead = is.read(data, 0, data.length)) != -1) {
-			buffer.write(data, 0, nRead);
-		}
+	    ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
-		return buffer.toByteArray();
+	    byte[] buf = new byte[1024];
 
+	    for (int readNum; (readNum = fis.read(buf)) != -1; ){
+	        bos.write(buf, 0, readNum);
+	    }
+		
 	}
 
 }
