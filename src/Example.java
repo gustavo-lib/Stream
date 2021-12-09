@@ -1,23 +1,29 @@
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class Example {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		File file = new File("java.pdf");
+		try {
+			File file = new File("src/java.pdf");
 
-	    FileOutputStream fis = new FileOutputStream(file);
-
-	    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-	    byte[] buf = new byte[1024];
-
-	    for (int readNum; (readNum = fis.read(buf)) != -1; ){
-	        bos.write(buf, 0, readNum);
-	    }
+			
+		      FileInputStream fis = new FileInputStream(file);
+		      byte [] data = new byte[(int)file.length()];
+		      fis.read(data);
+		      ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		      data = bos.toByteArray();
+		      System.out.println(data.toString());/**/
+			
+		}
+		catch(Exception e){System.out.println("d"+e);}
+		
 		
 	}
 
