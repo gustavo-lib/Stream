@@ -22,7 +22,7 @@ public class Example {
 		      System.out.println(data.toString());/**/
 			
 		}
-		catch(Exception e){System.out.println("d"+e);}
+		catch(Exception e){System.out.println(e);}
 		
 		
 	}
